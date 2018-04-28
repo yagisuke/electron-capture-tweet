@@ -1,0 +1,31 @@
+{
+  "name": "electron-capture-tweet",
+  "version": "1.0.0",
+  "description": "This is the capture application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yagisuke/electron-capture-tweet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yagisuke/electron-capture-tweet/issues"
+  },
+  "homepage": "https://github.com/yagisuke/electron-capture-tweet#readme",
+  "keywords": [
+    "electron",
+    "react",
+    "twitter"
+  ],
+  "author": "yagisuke",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "electron": "^1.8.6"
+  }
+}
