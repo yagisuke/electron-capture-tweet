@@ -21,7 +21,7 @@ function getDesktopVideoStream(sourceDisplay) {
             if (sources.length === 1) {
                 targetSource = sources[0]
             } else {
-                targetSource = source.find(source => source.name === sourceDisplay.name)
+                targetSource = sources.find(source => source.name === sourceDisplay.name)
             }
 
             if (!targetSource) {
