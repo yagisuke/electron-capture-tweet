@@ -35,7 +35,8 @@ module.exports = {
     },
     entry: {
         'main/index': './src/main/index.js',
-        'renderer/app': './src/renderer/app.js'
+        'renderer/app': './src/renderer/app.js',
+        'renderer/captureWindow': './src/renderer/captureWindow.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
