@@ -2,3 +2,6 @@ yarn-error.log
 node_modules
 .DS_STORE
 dist
+
+// twitterのconfigはgithubに上げないようにしとく
+src/const/twitter-config.js
