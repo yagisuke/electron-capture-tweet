@@ -4,4 +4,4 @@ node_modules
 dist
 
 // twitterのconfigはgithubに上げないようにしとく
-// src/const/twitter-config.js
+src/const/twitter-config.js
