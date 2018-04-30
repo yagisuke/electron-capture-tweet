@@ -91,7 +91,7 @@ class Trimmer extends Component {
         }
     }
 
-    renderReact() {
+    renderRect() {
         const bounds = position2Bounds(this.state.clientPosition)
         const inlineStyle = {
             left: bounds.x,
@@ -114,7 +114,7 @@ class Trimmer extends Component {
                 onMouseMove={this.handleOnMouseMove}
                 onMouseEnter={this.handleOnMouseEnter}
             >
-                { this.state.isClipping && this.renderReact() }
+                { this.state.isClipping ? this.renderRect() : <div /> }
             </div>
         )
     }

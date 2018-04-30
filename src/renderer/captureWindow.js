@@ -1,4 +1,4 @@
-import { desktopCapturer, screen } from 'electron'
+import { ipcRenderer, desktopCapturer } from 'electron'
 
 function getDesktopVideoStream(sourceDisplay) {
     return new Promise((resolve, reject) => {
@@ -73,19 +73,18 @@ function getCaptureImage({ videoElement, trimmedBounds, sourceDisplay }) {
     return canvasElement.toDataURL('image/png')
 }
 
-const sourceDisplay = screen.getPrimaryDisplay()
-sourceDisplay.name = 'Screen 1'
-const trimmedBounds = { x: 100, y: 100, width: 300, height: 300 }
-
-getDesktopVideoStream(screen.getPrimaryDisplay()).then(stream => {
-    const videoElement = document.createElement('video')
-    videoElement.src = URL.createObjectURL(stream)
-    videoElement.play()
-    videoElement.addEventListener('loadedmetadata', () => {
-        const dataURL = getCaptureImage({ videoElement, trimmedBounds, sourceDisplay })
-        const imgElemment = document.createElement('img')
-        imgElemment.src = dataURL
-
-        document.querySelector('body').appendChild(imgElemment)
+ipcRenderer.on('CAPTURE', (_, { sourceDisplay, trimmedBounds }) => {
+    getDesktopVideoStream(sourceDisplay).then(stream => {
+        const videoElement = document.createElement('video')
+        videoElement.src = URL.createObjectURL(stream)
+        videoElement.play()
+        videoElement.addEventListener('loadedmetadata', () => {
+            const dataURL = getCaptureImage({ videoElement, trimmedBounds, sourceDisplay })
+            ipcRenderer.send('REPLY_CAPTURE', { dataURL })
+            videoElement.pause()
+            URL.revokeObjectURL(dataURL)
+        })
+    }).catch(error => {
+        ipcRenderer.send('REPLY_CAPTURE', { error })
     })
 })

@@ -2,24 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Markdown Editor</title>
-    <link rel="stylesheet" href="node_modules/photon/dist/css/photon.css">
-    <style>
-        #app {
-            position: absolute;
-            top: 8px;
-            bottom: 8px;
-            left: 8px;
-            right: 8px;
-        }
-    </style>
+    <title>Desktop Capturer</title>
 </head>
 <body>
-    <div class="window">
-        <div id="app" class="window-content"></div>
-    </div>
-    <script>
-        require("./dist/renderer/app.js")
-    </script>
+    <div id="app"></div>
+    <script src="dist/renderer/app.js"></script>
 </body>
 </html>
