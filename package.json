@@ -24,6 +24,7 @@
   "author": "yagisuke",
   "license": "ISC",
   "dependencies": {
+    "oauth": "^0.9.15",
     "photon": "^2.0.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
