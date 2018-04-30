@@ -3,5 +3,11 @@ node_modules
 .DS_STORE
 dist
 
-// twitterのconfigはgithubに上げないようにしとく
-src/const/twitter-config.js
+#####
+# MEMO
+# src/const/twitter-config.js はファイル変更の追跡は行なっていない
+#
+# 除外から戻すとき
+# git update-index --no-assume-unchanged src/const/twitter-config.js
+# 除外するとき
+# git update-index --assume-unchanged src/const/twitter-config.js
