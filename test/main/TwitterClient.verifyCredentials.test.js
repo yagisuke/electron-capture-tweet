@@ -1,3 +1,5 @@
+// $ ./node_modules/.bin/babel-node test/main/TwitterClient.verifyCredentials.test.js
+
 import createTwitterOAuth from '../../src/main/createTwitterOAuth'
 import createTwitterClient from '../../src/main/createTwitterClient'
 
