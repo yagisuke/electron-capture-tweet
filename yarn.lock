@@ -1546,10 +1546,6 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
-crc32@0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/crc32/-/crc32-0.2.2.tgz#7ad220d6ffdcd119f9fc127a7772cacea390a4ba"
-
 create-ecdh@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.1.tgz#44223dfed533193ba5ba54e0df5709b89acf1f82"
@@ -1735,7 +1731,7 @@ debug@2.6.9, debug@^2.1.2, debug@^2.1.3, debug@^2.2.0, debug@^2.3.3, debug@^2.6.
   dependencies:
     ms "2.0.0"
 
-debug@3.1.0, debug@^3.1.0:
+debug@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
@@ -4009,13 +4005,9 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
 
-photon@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/photon/-/photon-2.0.1.tgz#4044c1ad637ae4733744bb4643fb7b15a4429f97"
-  dependencies:
-    crc32 "0.2.2"
-    debug "3.1.0"
-    seed-random "2.2.0"
+"photon@github:connors/photon":
+  version "0.1.2"
+  resolved "https://codeload.github.com/connors/photon/tar.gz/ba7b496f5d69ff486cdcf446bbfce3838bd6a4d0"
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
@@ -4835,10 +4827,6 @@ schema-utils@^0.4.4, schema-utils@^0.4.5:
 scoped-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/scoped-regex/-/scoped-regex-1.0.0.tgz#a346bb1acd4207ae70bd7c0c7ca9e566b6baddb8"
-
-seed-random@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/seed-random/-/seed-random-2.2.0.tgz#2a9b19e250a817099231a5b99a4daf80b7fbed54"
 
 "semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@^5.5.0:
   version "5.5.0"
