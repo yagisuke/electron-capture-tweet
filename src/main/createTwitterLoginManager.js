@@ -1,9 +1,13 @@
+import path from 'path'
+import fs from 'fs'
 import { app, shell, ipcMain, BrowserWindow } from 'electron'
 import createTwitterOAuth from './createTwitterOAuth'
+import createTwitterClient from './createTwitterClient'
 
-class TwitterLoginManager {
+export class TwitterLoginManager {
     constructor() {
         this.oauth = createTwitterOAuth()
+        this.credentialPath = path.join(app.getPath('userData'), '.twitter_credentials')
     }
 
     getAccessToken() {
@@ -39,6 +43,49 @@ class TwitterLoginManager {
                 pincodeWindow.loadURL(`file://${__dirname}/../../pincodeWindow.html`)
             })
         })
+    }
+
+    init() {
+        const loginAndVerify = () => {
+            return this.getAccessToken().then(credentials => {
+                this.saveCredentials(credentials)
+                return this.verify()
+            })
+        }
+
+        const credentials = this.loadCredentials()
+        if (!credentials) {
+            // Tokenが保存されていない場合
+            return loginAndVerify()
+        } else {
+            return this.verify().catch(() => {
+                // 保存されたTokenが正しくない場合
+                return loginAndVerify()
+            })
+        }
+    }
+
+    loadCredentials() {
+        try {
+            this.credentials = JSON.parse(fs.readFileSync(this.credentialPath, 'utf-8'))
+            return this.credentials
+        } catch(e) {
+            this.credentials = null
+            return null
+        }
+    }
+
+    saveCredentials(credentials) {
+        this.credentials = credentials
+        fs.writeFileSync(this.credentialPath, JSON.stringify(this.credentials), 'utf-8')
+    }
+
+    createClient() {
+        return createTwitterClient(this.oauth, this.credentials.accessToken, this.credentials.accessTokenSecret)
+    }
+
+    verify() {
+        return this.createClient().verifyCredentials()
     }
 }
 
