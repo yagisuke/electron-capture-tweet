@@ -34,7 +34,8 @@ module.exports = {
         'main/index': './src/main/index.js',
         'renderer/app': './src/renderer/app.js',
         'renderer/captureWindow': './src/renderer/captureWindow.js',
-        'renderer/pincodeWindow': './src/renderer/pincodeWindow.js'
+        'renderer/pincodeWindow': './src/renderer/pincodeWindow.js',
+        'renderer/previewWindow': './src/renderer/previewWindow.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

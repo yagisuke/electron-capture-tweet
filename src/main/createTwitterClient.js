@@ -21,6 +21,25 @@ export class TwitterClient {
             )
         })
     }
+
+    uploadMedia(params) {
+        return new Promise((resolve, reject) => {
+            this.oauth.post(
+                'https://upload.twitter.com/1.1/media/upload.json',
+               this.oauthAccessToken,
+               this.oauthAccessSecret,
+               params,
+               'application/x-www-form-urlencoded',
+               (error, data) => {
+                   if (error) {
+                       return reject(error)
+                   } else {
+                       return resolve(JSON.parse(data))
+                   }
+               }
+            )
+        })
+    }
 }
 
 function createTwitterClient(oauth, oauthAccessToken, oauthAccessSecret) {
