@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ipcRenderer } from 'electron'
 import styles from './Pincode.css'
 
-class Pincode extends React.Component {
+class Pincode extends Component {
     constructor(props) {
         super(props)
 

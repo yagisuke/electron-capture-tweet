@@ -13,9 +13,7 @@ function trimDesktop() {
                 alwaysOnTop: true,
                 x, y, width, height
             })
-
             win.loadURL(`file://${__dirname}/../../index.html`)
-
             return { win, display }
         })
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ipcRenderer } from 'electron'
 import styles from './Trimmer.css'
 
-function position2Bounds({ x1, x2, y1, y2 }){
+function position2Bounds({ x1, x2, y1, y2 }) {
     const x = Math.min(x1, x2)
     const y = Math.min(y1, y2)
     const width = Math.abs(x2 - x1)
@@ -54,9 +54,7 @@ class Trimmer extends Component {
      * @param {*} e 
      */
     handleOnMouseUp(e) {
-        this.setState({
-            isClipping: false
-        })
+        this.setState({ isClipping: false })
 
         const trimmedBounds = position2Bounds(this.state.screenPosition)
         if (trimmedBounds.width > 100 && trimmedBounds.height > 100) {

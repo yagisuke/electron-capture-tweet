@@ -40,6 +40,25 @@ export class TwitterClient {
             )
         })
     }
+
+    updateStatuses(params) {
+        return new Promise((resolve, reject) => {
+            this.oauth.post(
+                'https://api.twitter.com/1.1/statuses/update.json',
+                this.oauthAccessToken,
+                this.oauthAccessSecret,
+                params,
+                'application/x-www-form-urlencoded',
+                (error, data) => {
+                    if (error) {
+                        return reject(error)
+                    } else {
+                        return resolve(JSON.parse(data))
+                    }
+                }
+            )
+        })
+    }
 }
 
 function createTwitterClient(oauth, oauthAccessToken, oauthAccessSecret) {
