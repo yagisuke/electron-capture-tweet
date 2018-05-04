@@ -22,7 +22,7 @@ class PreviewWindow extends EventEmitter {
     }
 
     handlePostTweet(e, args) {
-        this.handlePostTweet(args).then(url => {
+        this.postTweet(args).then(url => {
             e.sender.send('REPLY_POST_TWEET', { url })
             this.emit('DONE_TWEET', { url })
         }).catch(error => {
