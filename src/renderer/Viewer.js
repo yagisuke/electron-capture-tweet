@@ -1,8 +1,8 @@
-import React, { Compoenent } from 'react'
+import React, { Component } from 'react'
 import { ipcRenderer } from 'electron'
 import styles from './Viewer.css'
 
-class Viewer extends Compoenent {
+class Viewer extends Component {
     constructor(props) {
         super(props)
 
@@ -65,7 +65,7 @@ class Viewer extends Compoenent {
             <div className={styles.root} ref='root'>
                 <div className={styles.image}>
                     <div>
-                        <img src={this.props.src}/>
+                        <img src={this.props.src} />
                     </div>
                 </div>
                 <form className={styles.form} onSubmit={this.handleOnSubmit}>

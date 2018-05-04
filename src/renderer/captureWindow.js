@@ -15,7 +15,7 @@ function getDesktopVideoStream(sourceDisplay) {
             }
 
             if (!targetSource) {
-                return reject({ message: 'No availabele source' })
+                return reject({ message: 'No available source' })
             }
 
             // ストリームオブジェクトの取得
@@ -38,16 +38,17 @@ function getDesktopVideoStream(sourceDisplay) {
 }
 
 function getCaptureImage({ videoElement, trimmedBounds, sourceDisplay }) {
+    // video要素の幅と高さを取得
     const { videoWidth, videoHeight } = videoElement
     const scale = sourceDisplay.scaleFactor || 1
 
     // video要素内におけるデスクトップ画像の余白サイズ算出
     const blankWidth = Math.max((videoWidth - sourceDisplay.bounds.width * scale) / 2, 0)
-    const blankHeight = Math.max((videoHeight - sourceDisplay.bounds.Height * scale) / 2, 0)
+    const blankHeight = Math.max((videoHeight - sourceDisplay.bounds.height * scale) / 2, 0)
 
     // video要素内における切り取り対象領域の位置(x座標値・y座標値)算出
-    const offestX = (trimmedBounds.x - sourceDisplay.bounds.x) * scale + blankWidth
-    const offestY = (trimmedBounds.y - sourceDisplay.bounds.y) * scale + blankHeight
+    const offsetX = (trimmedBounds.x - sourceDisplay.bounds.x) * scale + blankWidth
+    const offsetY = (trimmedBounds.y - sourceDisplay.bounds.y) * scale + blankHeight
 
     // canvas要素の作成
     const canvasElement = document.createElement('canvas')
@@ -60,8 +61,8 @@ function getCaptureImage({ videoElement, trimmedBounds, sourceDisplay }) {
     // canvas要素にvideo要素の内容を描画
     context.drawImage(
         videoElement,
-        offestX,
-        offestY,
+        offsetX,
+        offsetY,
         trimmedBounds.width * scale,
         trimmedBounds.height * scale,
         0,
