@@ -6,22 +6,6 @@ import createPreviewWindow from './createPreviewWindow'
 
 let captureWindow
 
-function captureAndOpenItem() {
-    const fileManager = createFileManager()
-    return trimDesktop()
-        .then(captureWindow.capture.bind(captureWindow))
-        .then(image => {
-            const createFilename = fileManager.writeImage(app.getPath('temp'), image)
-            return createFilename
-        })
-        .then(shell.openItem.bind(shell))
-        .then(() => {
-            if (process.platform !== 'darwin') {
-                app.quit()
-            }
-        })
-}
-
 function captureAndPost() {
     const fileManager = createFileManager()
     return trimDesktop()
@@ -44,6 +28,5 @@ function captureAndPost() {
 
 app.on('ready', () => {
     captureWindow = createCaptureWindow()
-    // captureAndOpenItem()
     captureAndPost()
 })
